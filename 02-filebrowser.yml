@@ -1,0 +1,20 @@
+version: "3"
+services:
+  filebrowser:
+    image: hurlenko/filebrowser:v2.28.0
+    container_name: filebrowser
+    restart: unless-stopped
+    user: "1001:100"
+    ports:
+      - 3382:8080
+    volumes:
+      - /share/comics/comics:/data
+      - /share/docker/services/filebrowser/config:/config
+    environment:
+      - FB_BASEURL=/
+    networks:
+      - services
+
+networks:
+  services:
+    external: true

@@ -1,0 +1,15 @@
+{
+  email victor.lopezgom@gmail.com
+  renew_interval 30m
+}
+
+explorer.victorcete.dev {
+  reverse_proxy filebrowser:8080
+  request_body {
+    max_size 50MB
+  }
+}
+
+komga.victorcete.dev {
+  reverse_proxy komga:25600
+}

@@ -1,0 +1,21 @@
+version: "3"
+services:
+  caddy:
+    image: caddy:2.7
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "3380:80"
+      - "3443:443"
+      - "3443:443/udp"
+    volumes:
+      - /share/docker/services/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /share/docker/services/caddy/site:/srv
+      - /share/docker/services/caddy/data:/data
+      - /share/docker/services/caddy/config:/config
+    networks:
+      - services
+
+networks:
+  services:
+    external: true

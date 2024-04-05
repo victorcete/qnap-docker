@@ -1,0 +1,22 @@
+---
+version: "3"
+services:
+  test:
+    image: gotson/komga:1.10.4
+    container_name: komga
+    restart: unless-stopped
+    volumes:
+      - /share/docker/services/komga:/config
+      - /share/comics:/data
+    ports:
+      - 25600:25600
+    environment:
+      - TZ=Europe/Madrid
+      - UID=1001
+      - GID=100
+    networks:
+      - services
+
+networks:
+  services:
+    external: true
